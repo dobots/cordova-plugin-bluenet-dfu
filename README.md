@@ -1,3 +1,5 @@
+# Cordova plugin for DFU upload (Android ONLY)
+
 The plugin uses the Nordic Android DFU Library available [here](https://github.com/NordicSemiconductor/Android-DFU-Library) and provides an uploadFirmware function for Cordova.
 
 The following functions are available:
@@ -29,20 +31,30 @@ fields with a * means they are mutually exclusive, with the path having the prio
 has to be provided. If both are provided, the Path is used.
 Same for the init file which is optional and doesn't have to be provided.
 
-# Update Nordic Library
+## Update Nordic Library
 1. Download nordic library from https://github.com/NordicSemiconductor/Android-DFU-Library
 2. Create an Eclipse Android library project as described on https://github.com/NordicSemiconductor/Android-DFU-Library/tree/release/documentation#eclipse (ignore step 6)
 3. Copy the content of the Eclipse Android Library to the folder src/android/LibraryProject
 4. copy file src/android/FakeR.java to src/android/LibraryProject/src/no/nordicsemi/android
 5. Update src/android/LibraryProject/src/no/nordicsemi/android/dfu/DfuBaseService.java:
-	a. add import no.nordicsemi.android.FakeR;
-	b. create field
+	1. add import no.nordicsemi.android.FakeR;
+	2. create field
 		private FakeR fakeR;
-	c. assign field in onCreate:
+	3. assign field in onCreate:
 		fakeR = new FakeR(this);
-	d. replace all occurrences of getString(R.id.string.xxx) by
+	4. replace all occurrences of getString(R.id.string.xxx) by
 		getString(fakeR.getId("string", "xxx"))
-	e. replace all occurrences of getString(R.string.xxx, yyy)
+	5. replace all occurrences of getString(R.string.xxx, yyy)
 		String.format(getString(fakeR.getId("string", "xxx")), yyy)
-	f. replace all occurrences of BuildConfig.DEBUG by
+	6. replace all occurrences of BuildConfig.DEBUG by
 		(Boolean)fakeR.getBuildConfigValue("DEBUG")
+
+## Copyrights
+
+The copyrights (2014-2015) for the code belongs to the team of Distributed Organisms B.V. and are provided under an noncontagious open-source license:
+
+* Authors: Dominik Egger
+* Date: 27. Jul. 2015
+* License: LGPL v3+, Apache, or MIT, your choice
+* Almende B.V., http://www.almende.com and DoBots B.V., http://www.dobots.nl
+* Rotterdam, The Netherlands
