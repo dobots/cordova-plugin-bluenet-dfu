@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android" id="nl.dobots.bluenetdfu" version="0.0.1">
+
+	<name>Bluenet DFU</name>
+	<description>Upload bluenet code over DFU</description>
+	<author>Dominik Egger</author>
+	<keywords>bluenet,dfu</keywords>
+	<license>LGPL v3+, Apache, or MIT, your choice</license>
+	<js-module name="BluenetDfu" src="www/bluenetDfu.js">
+		<clobbers target="window.bluenetDfu" />
+	</js-module>
+	<platform name="android">
+		<config-file target="res/xml/config.xml" parent="/*">
+			<feature name="BluenetDfuPlugin">
+				<param name="android-package" value="nl.dobots.bluenetdfu.BluenetDfuPlugin" />
+			</feature>
+		</config-file>
+
+		<source-file src="src/android/BluenetDfuPlugin.java" target-dir="src/nl/dobots/bluenetdfu" />
+		<source-file src="src/android/DfuService.java" target-dir="src/nl/dobots/bluenetdfu" />
+		<source-file src="src/android/NotificationActivity.java" target-dir="src/nl/dobots/bluenetdfu" />
+
+		<config-file target="AndroidManifest.xml" parent="/manifest">
+			<uses-permission android:name="android.permission.BLUETOOTH"/>
+			<uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
+		</config-file>
+
+		<config-file target="AndroidManifest.xml" parent="/manifest/application">
+			<service android:name="nl.dobots.bluenetdfu.DfuService"></service>
+		</config-file>
+
+		<!-- Use DFU Library from nordic -->
+		<framework src="src/android/LibraryProject" custom="true" />
+
+		<!-- Add Strings used by the nordic library -->
+<!-- 		<config-file target="res/xml/strings.xml" parent="/resources">
+			<string name="dfu_unknown_name">unnamed device</string>
+			<string name="dfu_action_abort">Abort</string>
+			<string name="dfu_status_initializing">Initializing&#8230;</string>
+			<string name="dfu_status_connecting">Connecting&#8230;</string>
+			<string name="dfu_status_starting">Starting DFU&#8230;</string>
+			<string name="dfu_status_switching_to_dfu">Starting bootloader&#8230;</string>
+			<string name="dfu_status_uploading">Uploading&#8230;</string>
+			<string name="dfu_status_uploading_part" formatted="false">Uploading part %d/%d&#8230;</string>
+			<string name="dfu_status_validating">Validating&#8230;</string>
+			<string name="dfu_status_disconnecting">Disconnecting&#8230;</string>
+			<string name="dfu_status_completed">Done</string>
+			<string name="dfu_status_aborted">Aborted</string>
+			<string name="dfu_status_aborting">Aborting&#8230;</string>
+			<string name="dfu_status_error">Upload failed</string>
+			<string name="dfu_status_connecting_msg">Connecting to %s&#8230;</string>
+			<string name="dfu_status_starting_msg">Initializing DFU process&#8230;</string>
+			<string name="dfu_status_switching_to_dfu_msg">Waiting for bootloader&#8230;</string>
+			<string name="dfu_status_uploading_components_msg">Transmitting components to %s&#8230;</string>
+			<string name="dfu_status_uploading_msg">Transmitting application to %s&#8230;</string>
+			<string name="dfu_status_validating_msg">Validating&#8230;</string>
+			<string name="dfu_status_completed_msg">Application has been send successfully.</string>
+			<string name="dfu_status_aborted_msg">Application upload has been canceled.</string>
+			<string name="dfu_status_disconnecting_msg">Disconnecting from %s&#8230;</string>
+			<string name="dfu_status_error_msg">DFU process failed.</string>
+		</config-file> -->
+
+		<!-- Add drawables used by the nordic library -->
+<!-- 		<resource-file src="res/drawable-hdpi/ic_action_notify_cancel.png" target="res/drawable-hdpi/ic_action_notify_cancel.png" />
+		<resource-file src="res/drawable-hdpi/ic_stat_notify_dfu.png" target="res/drawable-hdpi/ic_stat_notify_dfu.png" />
+		<resource-file src="res/drawable-xhdpi/ic_action_notify_cancel.png" target="res/drawable-xhdpi/ic_action_notify_cancel.png" />
+		<resource-file src="res/drawable-xhdpi/ic_stat_notify_dfu.png" target="res/drawable-xhdpi/ic_stat_notify_dfu.png" /> -->
+
+	</platform>
+
+
+</plugin>
