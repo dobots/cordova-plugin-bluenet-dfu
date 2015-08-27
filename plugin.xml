@@ -89,7 +89,7 @@
 		<source-file src="src/android/LibraryProject/src/no/nordicsemi/android/error/GattError.java" target-dir="src/no/nordicsemi/android//error" />
 		<source-file src="src/android/LibraryProject/src/no/nordicsemi/android/FakeR.java" target-dir="src/no/nordicsemi/android/" />
 
-		<resource-file src="src/android/LibraryProject/libs/android-support-v4.jar" target="libs/android-support-v4.jar" />
+		<!-- <resource-file src="src/android/LibraryProject/libs/android-support-v4.jar" target="libs/android-support-v4.jar" /> -->
 		<resource-file src="src/android/LibraryProject/libs/gson-2.3.1.jar" target="libs/gson-2.3.1.jar" />
 
 	</platform>
