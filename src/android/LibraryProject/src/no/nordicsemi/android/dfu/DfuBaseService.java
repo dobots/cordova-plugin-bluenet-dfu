@@ -2608,7 +2608,7 @@ public abstract class DfuBaseService extends IntentService {
 
 		final NotificationCompat.Builder builder = new NotificationCompat.Builder(this).setSmallIcon(android.R.drawable.stat_sys_upload).setOnlyAlertOnce(true);//.setLargeIcon(largeIcon);
 		// Android 5
-		builder.setColor(Color.GRAY);
+		// builder.setColor(Color.GRAY);
 
 		switch (progress) {
 			case PROGRESS_CONNECTING:
@@ -2630,7 +2630,8 @@ public abstract class DfuBaseService extends IntentService {
 				break;
 			case PROGRESS_COMPLETED:
 				builder.setOngoing(false).setContentTitle(getString(fakeR.getId("string", "dfu_status_completed"))).setSmallIcon(android.R.drawable.stat_sys_upload_done)
-						.setContentText(getString(fakeR.getId("string", "dfu_status_completed_msg"))).setAutoCancel(true).setColor(0xFF00B81A);
+						.setContentText(getString(fakeR.getId("string", "dfu_status_completed_msg"))).setAutoCancel(true);
+						// .setColor(0xFF00B81A);
 				break;
 			case PROGRESS_ABORTED:
 				builder.setOngoing(false).setContentTitle(getString(fakeR.getId("string", "dfu_status_aborted"))).setSmallIcon(android.R.drawable.stat_sys_upload_done)
@@ -2640,7 +2641,8 @@ public abstract class DfuBaseService extends IntentService {
 				if (progress >= ERROR_MASK) {
 					// progress is an error number
 					builder.setOngoing(false).setContentTitle(getString(fakeR.getId("string", "dfu_status_error"))).setSmallIcon(android.R.drawable.stat_sys_upload_done)
-							.setContentText(getString(fakeR.getId("string", "dfu_status_error_msg"))).setAutoCancel(true).setColor(Color.RED);
+							.setContentText(getString(fakeR.getId("string", "dfu_status_error_msg"))).setAutoCancel(true);
+							// .setColor(Color.RED);
 				} else {
 					// progress is in percents
 					final String title = mPartsTotal == 1 ? getString(fakeR.getId("string", "dfu_status_uploading")) : String.format(getString(fakeR.getId("string", "dfu_status_uploading_part")), mPartCurrent, mPartsTotal);
