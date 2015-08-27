@@ -30,10 +30,10 @@
 		</config-file>
 
 		<!-- Use DFU Library from nordic -->
-		<framework src="src/android/LibraryProject" custom="true" />
+		<!-- <framework src="src/android/LibraryProject" custom="true" /> -->
 
 		<!-- Add Strings used by the nordic library -->
-<!-- 		<config-file target="res/xml/strings.xml" parent="/resources">
+		<config-file target="res/values/strings.xml" parent="/resources">
 			<string name="dfu_unknown_name">unnamed device</string>
 			<string name="dfu_action_abort">Abort</string>
 			<string name="dfu_status_initializing">Initializing&#8230;</string>
@@ -58,15 +58,40 @@
 			<string name="dfu_status_aborted_msg">Application upload has been canceled.</string>
 			<string name="dfu_status_disconnecting_msg">Disconnecting from %s&#8230;</string>
 			<string name="dfu_status_error_msg">DFU process failed.</string>
-		</config-file> -->
+		</config-file>
 
 		<!-- Add drawables used by the nordic library -->
-<!-- 		<resource-file src="res/drawable-hdpi/ic_action_notify_cancel.png" target="res/drawable-hdpi/ic_action_notify_cancel.png" />
-		<resource-file src="res/drawable-hdpi/ic_stat_notify_dfu.png" target="res/drawable-hdpi/ic_stat_notify_dfu.png" />
-		<resource-file src="res/drawable-xhdpi/ic_action_notify_cancel.png" target="res/drawable-xhdpi/ic_action_notify_cancel.png" />
-		<resource-file src="res/drawable-xhdpi/ic_stat_notify_dfu.png" target="res/drawable-xhdpi/ic_stat_notify_dfu.png" /> -->
+		<resource-file src="src/android/LibraryProject/res/drawable-hdpi/ic_action_notify_cancel.png" target="res/drawable-hdpi/ic_action_notify_cancel.png" />
+		<resource-file src="src/android/LibraryProject/res/drawable-hdpi/ic_stat_notify_dfu.png" target="res/drawable-hdpi/ic_stat_notify_dfu.png" />
+		<resource-file src="src/android/LibraryProject/res/drawable-xhdpi/ic_action_notify_cancel.png" target="res/drawable-xhdpi/ic_action_notify_cancel.png" />
+		<resource-file src="src/android/LibraryProject/res/drawable-xhdpi/ic_stat_notify_dfu.png" target="res/drawable-xhdpi/ic_stat_notify_dfu.png" />
+
+		<!-- Ad source -->
+		<source-file src="src/android/LibraryProject/src/no/nordicsemi/android/dfu/exception/DeviceDisconnectedException.java" target-dir="src/no/nordicsemi/android//dfu/exception/" />
+		<source-file src="src/android/LibraryProject/src/no/nordicsemi/android/dfu/exception/DfuException.java" target-dir="src/no/nordicsemi/android//dfu/exception/" />
+		<source-file src="src/android/LibraryProject/src/no/nordicsemi/android/dfu/exception/HexFileValidationException.java" target-dir="src/no/nordicsemi/android//dfu/exception/" />
+		<source-file src="src/android/LibraryProject/src/no/nordicsemi/android/dfu/exception/RemoteDfuException.java" target-dir="src/no/nordicsemi/android//dfu/exception/" />
+		<source-file src="src/android/LibraryProject/src/no/nordicsemi/android/dfu/exception/UnknownResponseException.java" target-dir="src/no/nordicsemi/android//dfu/exception/" />
+		<source-file src="src/android/LibraryProject/src/no/nordicsemi/android/dfu/exception/UploadAbortedException.java" target-dir="src/no/nordicsemi/android//dfu/exception/" />
+		<source-file src="src/android/LibraryProject/src/no/nordicsemi/android/dfu/ArchiveInputStream.java" target-dir="src/no/nordicsemi/android//dfu/" />
+		<source-file src="src/android/LibraryProject/src/no/nordicsemi/android/dfu/DfuBaseService.java" target-dir="src/no/nordicsemi/android//dfu/" />
+		<source-file src="src/android/LibraryProject/src/no/nordicsemi/android/dfu/DfuSettingsConstants.java" target-dir="src/no/nordicsemi/android//dfu/" />
+		<source-file src="src/android/LibraryProject/src/no/nordicsemi/android/dfu/HexInputStream.java" target-dir="src/no/nordicsemi/android//dfu/" />
+		<source-file src="src/android/LibraryProject/src/no/nordicsemi/android/dfu/manifest/FileInfo.java" target-dir="src/no/nordicsemi/android//dfu/manifest" />
+		<source-file src="src/android/LibraryProject/src/no/nordicsemi/android/dfu/manifest/InitPacketData.java" target-dir="src/no/nordicsemi/android//dfu/manifest" />
+		<source-file src="src/android/LibraryProject/src/no/nordicsemi/android/dfu/manifest/ManifestFile.java" target-dir="src/no/nordicsemi/android//dfu/manifest" />
+		<source-file src="src/android/LibraryProject/src/no/nordicsemi/android/dfu/manifest/Manifest.java" target-dir="src/no/nordicsemi/android//dfu/manifest" />
+		<source-file src="src/android/LibraryProject/src/no/nordicsemi/android/dfu/manifest/SoftDeviceBootloaderFileInfo.java" target-dir="src/no/nordicsemi/android//dfu/manifest" />
+		<source-file src="src/android/LibraryProject/src/no/nordicsemi/android/dfu/scanner/BootloaderScannerFactory.java" target-dir="src/no/nordicsemi/android//dfu/scanner" />
+		<source-file src="src/android/LibraryProject/src/no/nordicsemi/android/dfu/scanner/BootloaderScanner.java" target-dir="src/no/nordicsemi/android//dfu/scanner" />
+		<source-file src="src/android/LibraryProject/src/no/nordicsemi/android/dfu/scanner/BootloaderScannerJB.java" target-dir="src/no/nordicsemi/android//dfu/scanner" />
+		<source-file src="src/android/LibraryProject/src/no/nordicsemi/android/dfu/scanner/BootloaderScannerLollipop.java" target-dir="src/no/nordicsemi/android//dfu/scanner" />
+		<source-file src="src/android/LibraryProject/src/no/nordicsemi/android/error/GattError.java" target-dir="src/no/nordicsemi/android//error" />
+		<source-file src="src/android/LibraryProject/src/no/nordicsemi/android/FakeR.java" target-dir="src/no/nordicsemi/android/" />
+
+		<resource-file src="src/android/LibraryProject/libs/android-support-v4.jar" target="libs/android-support-v4.jar" />
+		<resource-file src="src/android/LibraryProject/libs/gson-2.3.1.jar" target="libs/gson-2.3.1.jar" />
 
 	</platform>
-
 
 </plugin>
