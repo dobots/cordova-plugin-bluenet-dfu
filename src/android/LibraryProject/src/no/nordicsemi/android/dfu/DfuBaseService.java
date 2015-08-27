@@ -859,6 +859,11 @@ public abstract class DfuBaseService extends IntentService {
 
 						// When neither of them is true, send the next packet
 						try {
+							// (older?) chips can't keep up if packets are sent too fast, so delay a bit, making the
+							// upload slower, but more reliable
+							// logi("Sleep for 30 msec");
+							SystemClock.sleep(30);
+
 							waitIfPaused();
 							// The writing might have been aborted (mAborted = true), an error might have occurred.
 							// In that case stop sending.
